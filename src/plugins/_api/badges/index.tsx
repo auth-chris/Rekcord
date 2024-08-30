@@ -52,7 +52,7 @@ async function loadBadges(noCache = false) {
     if (noCache)
         init.cache = "no-cache";
 
-    DonorBadges = await fetch("https://paste.gg/p/anonymous/02763e6228954c54922b9b8f883c0dbd/files/087b4149ac674ff9bf92bc7ec6e299cb/raw", init)
+    DonorBadges = await fetch("https://privatebin.net/?48afbdbe9bc0beef#BL7zFuBiJ2DqsxRQrRdvCGPKcXCZyRXMt8xpd5Ur8sS1", init)
         .then(r => r.json());
 }
 

@@ -84,7 +84,7 @@ export default definePlugin({
         return [
             {
                 section: SectionTypes.HEADER,
-                label: "Vencord",
+                label: "Rekcord",
                 className: "vc-settings-header"
             },
             {

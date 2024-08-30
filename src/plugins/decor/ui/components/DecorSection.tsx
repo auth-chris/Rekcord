@@ -8,7 +8,6 @@ import { Flex } from "@components/Flex";
 import { findByCodeLazy } from "@webpack";
 import { Button, useEffect } from "@webpack/common";
 
-import { useAuthorizationStore } from "../../lib/stores/AuthorizationStore";
 import { useCurrentUserDecorationsStore } from "../../lib/stores/CurrentUserDecorationsStore";
 import { cl } from "../";
 import { openChangeDecorationModal } from "../modals/ChangeDecorationModal";
@@ -22,38 +21,37 @@ export interface DecorSectionProps {
 }
 
 export default function DecorSection({ hideTitle = false, hideDivider = false, noMargin = false }: DecorSectionProps) {
-    const authorization = useAuthorizationStore();
     const { selectedDecoration, select: selectDecoration, fetch: fetchDecorations } = useCurrentUserDecorationsStore();
 
     useEffect(() => {
-        if (authorization.isAuthorized()) fetchDecorations();
-    }, [authorization.token]);
+        fetchDecorations();
+    }, []);
 
-    return <CustomizationSection
-        title={!hideTitle && "Decor"}
-        hasBackground={true}
-        hideDivider={hideDivider}
-        className={noMargin && cl("section-remove-margin")}
-    >
-        <Flex>
-            <Button
-                onClick={() => {
-                    if (!authorization.isAuthorized()) {
-                        authorization.authorize().then(openChangeDecorationModal).catch(() => { });
-                    } else openChangeDecorationModal();
-                }}
-                size={Button.Sizes.SMALL}
-            >
-                Change Decoration
-            </Button>
-            {selectedDecoration && authorization.isAuthorized() && <Button
-                onClick={() => selectDecoration(null)}
-                color={Button.Colors.PRIMARY}
-                size={Button.Sizes.SMALL}
-                look={Button.Looks.LINK}
-            >
-                Remove Decoration
-            </Button>}
-        </Flex>
-    </CustomizationSection>;
+    return (
+        <CustomizationSection
+            title={!hideTitle && "Decor"}
+            hasBackground={true}
+            hideDivider={hideDivider}
+            className={noMargin && cl("section-remove-margin")}
+        >
+            <Flex>
+                <Button
+                    onClick={openChangeDecorationModal}
+                    size={Button.Sizes.SMALL}
+                >
+                    Change Decoration
+                </Button>
+                {selectedDecoration && (
+                    <Button
+                        onClick={() => selectDecoration(null)}
+                        color={Button.Colors.PRIMARY}
+                        size={Button.Sizes.SMALL}
+                        look={Button.Looks.LINK}
+                    >
+                        Remove Decoration
+                    </Button>
+                )}
+            </Flex>
+        </CustomizationSection>
+    );
 }

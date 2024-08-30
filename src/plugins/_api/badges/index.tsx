@@ -52,7 +52,7 @@ async function loadBadges(noCache = false) {
     if (noCache)
         init.cache = "no-cache";
 
-    DonorBadges = await fetch("https://pub.microbin.eu/raw/emu-squid-eagle", init)
+    DonorBadges = await fetch("https://pub.microbin.eu/raw/eel-snail-squid", init)
         .then(r => r.json());
 }
 

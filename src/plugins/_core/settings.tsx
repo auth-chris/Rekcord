@@ -89,19 +89,19 @@ export default definePlugin({
             },
             {
                 section: "VencordSettings",
-                label: "Vencord",
+                label: "Rekcord",
                 element: VencordTab,
                 className: "vc-settings"
             },
             {
                 section: "VencordPlugins",
-                label: "Plugins",
+                label: "Rek-ins",
                 element: PluginsTab,
                 className: "vc-plugins"
             },
             {
                 section: "VencordThemes",
-                label: "Themes",
+                label: "Rekemes",
                 element: ThemesTab,
                 className: "vc-themes"
             },
@@ -113,13 +113,13 @@ export default definePlugin({
             },
             {
                 section: "VencordCloud",
-                label: "Cloud",
+                label: "Rainy Cloud",
                 element: CloudTab,
                 className: "vc-cloud"
             },
             {
                 section: "VencordSettingsSync",
-                label: "Backup & Restore",
+                label: "Rekup & Rektore",
                 element: BackupAndRestoreTab,
                 className: "vc-backup-restore"
             },

@@ -19,16 +19,21 @@
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
+import managedStyle from "./style.css?managed";
+
 export default definePlugin({
-    name: "NoScreensharePreview",
-    description: "Disables screenshare previews from being sent.",
-    authors: [Devs.Nuckyz],
+    name: "MessageDecorationsAPI",
+    description: "API to add decorations to messages",
+    authors: [Devs.TheSun],
+
+    managedStyle,
+
     patches: [
         {
-            find: '"ApplicationStreamPreviewUploadManager"',
+            find: '"Message Username"',
             replacement: {
-                match: /await \i\.\i\.(makeChunkedRequest\(|post\(\{url:)\i\.\i\.STREAM_PREVIEW.+?\}\)/g,
-                replace: "0"
+                match: /#{intl::GUILD_COMMUNICATION_DISABLED_BOTTOM_SHEET_TITLE}.+?renderPopout:.+?(?=\])/,
+                replace: "$&,Vencord.Api.MessageDecorations.__addDecorationsToMessage(arguments[0])"
             }
         }
     ]

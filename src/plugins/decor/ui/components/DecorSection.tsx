@@ -5,14 +5,14 @@
  */
 
 import { Flex } from "@components/Flex";
-import { findByCodeLazy } from "@webpack";
+import { findComponentByCodeLazy } from "@webpack";
 import { Button, useEffect } from "@webpack/common";
 
 import { useCurrentUserDecorationsStore } from "../../lib/stores/CurrentUserDecorationsStore";
 import { cl } from "../";
 import { openChangeDecorationModal } from "../modals/ChangeDecorationModal";
 
-const CustomizationSection = findByCodeLazy(".customizationSectionBackground");
+const CustomizationSection = findComponentByCodeLazy(".customizationSectionBackground");
 
 export interface DecorSectionProps {
     hideTitle?: boolean;
